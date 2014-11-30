@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var firstTextField: UITextField!
+    @IBOutlet weak var secondTextField: UITextField!
+    @IBOutlet weak var resultItem: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +24,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField.tag == 101 {
+            secondTextField.becomeFirstResponder()
+        } else if textField.tag == 102 {
+            resultItem.text = "\\o/ Item was saved! \\o/"
+            textField.resignFirstResponder()
+        }
+        return false
+    }
 
 }
 
